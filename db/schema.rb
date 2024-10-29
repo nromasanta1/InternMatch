@@ -10,8 +10,49 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 0) do
+ActiveRecord::Schema[7.2].define(version: 2024_10_29_095544) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "internship_applications", force: :cascade do |t|
+    t.date "application_date"
+    t.integer "status"
+    t.bigint "internship_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["internship_id"], name: "index_internship_applications_on_internship_id"
+    t.index ["user_id"], name: "index_internship_applications_on_user_id"
+  end
+
+  create_table "internships", force: :cascade do |t|
+    t.string "title"
+    t.string "role"
+    t.text "description"
+    t.string "location"
+    t.date "start_date"
+    t.date "end_date"
+    t.integer "compensation"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_internships_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "user_type"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "industry"
+    t.string "email"
+    t.string "contact_number"
+    t.string "location"
+    t.string "profile_picture"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "internship_applications", "internships"
+  add_foreign_key "internship_applications", "users"
+  add_foreign_key "internships", "users"
 end
