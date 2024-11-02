@@ -8,6 +8,18 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
+    <ul class="navbar-nav me-auto">
+      <li class="nav-item">
+        <%= link_to "Explore", "#", class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "My Internships", "#", class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "My Previoius Internships", "#", class: "nav-link" %>
+      </li>
+    </ul>
+
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
