@@ -13,15 +13,28 @@ class InternshipsController < ApplicationController
   end
 
   def create
-    @internship = Internship.new(params)
+    @internship = Internship.new(internship_params)
+    @restaurant.save
+    redirect_to internship_path(@internship)
   end
 
   def edit
+    @internship = Internship.find(params[:id])
   end
 
   def update
+    @internship = Internship.find(params[:id])
+    @internship.update(params[:internship])
   end
 
   def destroy
+    @internship = Internship.find(params[:id])
+    @internship.destroy
   end
+end
+
+private
+
+def internship_params
+  params.require(:internship).permit(:name, :role, :location, :start_date, :end_date, :compensation, :description)
 end
