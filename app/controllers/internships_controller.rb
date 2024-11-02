@@ -14,7 +14,7 @@ class InternshipsController < ApplicationController
 
   def create
     @internship = Internship.new(internship_params)
-    @restaurant.save
+    @internship.save
     redirect_to internship_path(@internship)
   end
 
