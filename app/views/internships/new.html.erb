@@ -1,0 +1,14 @@
+<div class="container my-4">
+  <h2>Create an internship</h2>
+  <%= simple_form_for @internship do |f| %>
+        <%= f.input :title %>
+        <%= f.input :role %>
+        <%= f.input :description %>
+        <%= f.input :location %>
+        <%= f.input :start_date %>
+        <%= f.input :end_date %>
+        <%= f.input :compensation %>
+        <%= f.button :submit, class: "btn btn-primary" %>
+        <%= link_to "Cancel", root_path, class: "btn btn-danger" %>
+      <% end %>
+</div>
