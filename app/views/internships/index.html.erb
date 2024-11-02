@@ -1,6 +1,8 @@
 <h1>Internships</h1>
+<% if current_user.user_type == "employer"%>
+  <%= link_to 'New Internship', new_internship_path %>
+<% end %>
 
-<%= link_to 'New Internship', new_internship_path %>
 
 <table>
   <thead>
