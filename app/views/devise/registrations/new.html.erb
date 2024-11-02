@@ -10,7 +10,9 @@
           <%= f.input :user_type,
                       as: :radio_buttons,
                       label: "I am an",
-                      collection: [["employer", "employer"], ["applicant", "applicant"]],
+                      collection: [['employer', 'employer'], ['applicant', 'applicant']],
+                      label_method: :second,
+                      value_method: :first,
                       required: true,
                       autofocus: true,
                       input_html: {autocomplete: "user-type"} %>
