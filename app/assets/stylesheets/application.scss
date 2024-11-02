@@ -10,3 +10,61 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+.footer-navbar {
+  background-color: #333; /* Adjust as needed */
+  color: #fff;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  padding: 0.5rem 0;
+}
+
+.footer-navbar .nav-link {
+  color: #ccc; /* Lighter color for footer links */
+}
+
+.footer-navbar .nav-link:hover {
+  color: #fff; /* Color on hover */
+}
+
+.top-section {
+
+  padding: 50px 0;
+  color: gray;
+}
+
+.top-section h1 {
+  font-size: 3rem;
+}
+
+.search-form .form-control {
+  margin-right: 0.5rem;
+}
+
+.featured-internships, .popular-listings {
+  text-align: left;
+  border-radius: 30px;
+  padding: 50px;
+}
+
+.internship-title {
+  margin-top: 3rem;
+  font-size: 1rem;
+}
+
+.listing-title {
+  margin-top: 0.5rem;
+}
+
+.popular-listings .bg-light {
+  padding-top: 2rem;
+}
+
+
+.intern-img {
+  width: 350px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+}
