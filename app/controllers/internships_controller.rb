@@ -14,8 +14,11 @@ class InternshipsController < ApplicationController
 
   def create
     @internship = Internship.new(internship_params)
-    @internship.save
-    redirect_to internship_path(@internship)
+    if @internship.save
+      redirect_to internship_path(@internship)
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def edit
