@@ -22,16 +22,24 @@ class InternshipApplicationsController < ApplicationController
   end
 
   def create
-    @internship = Internship.find(params[:internship_id])
-    @application = InternshipApplication.new(application_params)
-    @application.internship = @internship
-    @application.application_date = Date.current
-    @application.user = current_user
-    if @application.save
-      redirect_to internship_applications_path
-    else
-      render :create, status: :unprocessable_entity
-    end
+    # @existing_application = InternshipApplication.joins(internship: :user)
+    # raise
+    # unless @existing_application
+      @internship = Internship.find(params[:internship_id])
+      @application = InternshipApplication.new(application_params)
+      @application.internship = @internship
+      @application.application_date = Date.current
+      @application.user = current_user
+      if @application.save
+        redirect_to internship_applications_path
+      elsif
+        # Error: could not save for some reason
+        redirect_to root_path, status: :unprocessable_entity
+      end
+    # else
+      # Error message: existing user
+      # redirect_to root_path, status: :unprocessable_entity
+    # end
   end
 
   def edit

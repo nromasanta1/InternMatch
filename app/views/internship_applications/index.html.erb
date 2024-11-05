@@ -4,7 +4,6 @@
     <% @applications.each do |application| %>
     <ul>
       <li><%= link_to "#{application.internship.role} at #{application.internship.title}", internship_application_path(application) %></li>
-      <li>Application date: <%= application.application_date %></li>
       <li>Status: <%= application.status %></li>
       <% if application.status == "pending" %>
         <%= link_to "Delete", internship_application_path(application), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
@@ -20,7 +19,9 @@
       <li><%= application.comment %></li>
       <li><%= application.application_date %></li>
       <%= link_to "Show details", internship_application_path(application) %>
-      <%= link_to "Edit", edit_internship_application_path(application) %>
+      <% if application.status == "pending" %>
+        <%= link_to "Edit", edit_internship_application_path(application) %>
+      <% end %>
     </ul>
     <% end %>
   <% end %>
