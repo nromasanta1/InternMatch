@@ -70,4 +70,18 @@ puts "Seeding internships..."
   )
 end
 
+puts "Seeding internship applications..."
+InternshipApplication.create(
+  application_date: Faker::Date.between(from: 2.days.ago, to: Date.today),
+  status: 0,
+  internship_id: rand(Internship.first.id..Internship.last.id),
+  user_id: 3
+)
+InternshipApplication.create(
+  application_date: Faker::Date.between(from: 2.days.ago, to: Date.today),
+  status: 0,
+  internship_id: rand(Internship.first.id..Internship.last.id),
+  user_id: 4
+)
+
 puts "Complete!"
