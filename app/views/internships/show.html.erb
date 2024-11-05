@@ -8,5 +8,7 @@
     <li>End date: <%= @internship.end_date %></li>
     <li>$ <%= @internship.compensation %></li>
   </ul>
-  <%= link_to "Apply Now", "", class:"btn btn-primary" %>
+  <% if current_user.applicant? %>
+    <%= link_to "Apply Now", new_internship_internship_application_path(@internship), class:"btn btn-primary" %>
+  <% end %>
 </div>
