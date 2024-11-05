@@ -49,6 +49,16 @@ class InternshipApplicationsController < ApplicationController
     redirect_to internship_applications_path
   end
 
+  def destroy
+    @application = InternshipApplication.find(params[:id])
+    if current_user.applicant?
+      @application.destroy
+      redirect_to internship_applications_path
+    else
+      redirect_to root_path, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def application_params

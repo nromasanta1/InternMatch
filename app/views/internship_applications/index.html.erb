@@ -6,17 +6,20 @@
       <li><%= link_to "#{application.internship.role} at #{application.internship.title}", internship_application_path(application) %></li>
       <li>Application date: <%= application.application_date %></li>
       <li>Status: <%= application.status %></li>
+      <% if application.status == "pending" %>
+        <%= link_to "Delete", internship_application_path(application), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+      <% end %>
     </ul>
     <% end %>
   <% elsif current_user.employer? %>
     <h2>Received Applications</h2>
     <% @applications.each do |application| %>
     <ul>
-      <li><%= application.user.first_name %> <%= application.user.last_name %></li>
-      <li><%= application.internship.title %></li>
+      <li><%= application.user.first_name %> <%= application.user.last_name %> at <%= application.internship.title %></li>
       <li><%= application.status %></li>
       <li><%= application.comment %></li>
       <li><%= application.application_date %></li>
+      <%= link_to "Show details", internship_application_path(application) %>
       <%= link_to "Edit", edit_internship_application_path(application) %>
     </ul>
     <% end %>
