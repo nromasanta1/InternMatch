@@ -1,0 +1,12 @@
+<div class="container">
+  <%= @application.user.first_name %> <%= @application.user.last_name %>
+  applying for
+  <%= @application.internship.role %> at <%= @application.internship.title %>
+  <%= simple_form_for @application do |f| %>
+    <%= f.input :status,
+                as: :radio_buttons,
+                collection: [['pending', 'pending'], ['accepted', 'accepted'], ['declined', 'declined']]
+    %>
+    <%= f.button :submit, class: "btn btn-primary" %>
+  <% end %>
+</div>

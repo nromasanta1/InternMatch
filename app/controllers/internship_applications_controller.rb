@@ -1,11 +1,24 @@
 class InternshipApplicationsController < ApplicationController
   def index
-    @applications = InternshipApplication.where(user: current_user)
+    if current_user.applicant?
+      @applications = InternshipApplication.where(user: current_user)
+    elsif current_user.employer?
+      @applications = InternshipApplication.joins(internship: :user)
+    end
+  end
+
+  def show
+    @application = InternshipApplication.find(params[:id])
   end
 
   def new
     @internship = Internship.find(params[:internship_id])
-    @application = InternshipApplication.new
+    if current_user.applicant?
+      @application = InternshipApplication.new
+    else
+      @application = []
+      redirect_to root_path, status: :unprocessable_entity
+    end
   end
 
   def create
@@ -19,12 +32,26 @@ class InternshipApplicationsController < ApplicationController
     else
       render :create, status: :unprocessable_entity
     end
+  end
 
+  def edit
+    if current_user.employer?
+      @application = InternshipApplication.find(params[:id])
+    else
+      @application = []
+      redirect_to root_path, status: :unprocessable_entity
+    end
+  end
+
+  def update
+    @application = InternshipApplication.find(params[:id])
+    @application.update(application_params)
+    redirect_to internship_applications_path
   end
 
   private
 
   def application_params
-    params.require(:internship_application).permit(:comment)
+    params.require(:internship_application).permit(:comment, :status)
   end
 end
