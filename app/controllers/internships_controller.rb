@@ -14,8 +14,12 @@ class InternshipsController < ApplicationController
 
   def create
     @internship = Internship.new(internship_params)
-    @internship.save
-    redirect_to internship_path(@internship)
+
+    if @internship.save
+        redirect_to internship_path(@internship)
+    else
+      render :new
+    end
   end
 
   def edit
@@ -24,7 +28,12 @@ class InternshipsController < ApplicationController
 
   def update
     @internship = Internship.find(params[:id])
-    @internship.update(params[:internship])
+
+    if @internship.update(params[:internship])
+      redirect_to internship_path(@internship)
+    else
+      render :edit
+    end
   end
 
   def destroy
