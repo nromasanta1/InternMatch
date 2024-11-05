@@ -1,0 +1,9 @@
+<div class="container">
+  <h2>My applications</h2>
+  <% @applications.each do |application| %>
+  <ul>
+    <li><%= application.internship.role %> at <%= application.internship.title %></li>
+    <li>Status: <%= application.status %></li>
+  </ul>
+  <% end %>
+</div>
