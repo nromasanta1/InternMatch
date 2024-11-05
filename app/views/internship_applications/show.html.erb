@@ -1,0 +1,10 @@
+<div class="container">
+  <% if current_user.applicant? %>
+    <h2>Your application for: <%= @application.internship.role %> at <%= @application.internship.title %></h2>
+    <p>Status: <%= @application.status %> </p>
+    <p>Sent on: <%= @application.application_date %></p>
+    <p>Comment: <%= @application.comment %></p>
+  <% elsif current_user.employer? %>
+
+  <% end %>
+</div>
