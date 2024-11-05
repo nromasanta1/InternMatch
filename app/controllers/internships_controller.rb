@@ -14,11 +14,10 @@ class InternshipsController < ApplicationController
 
   def create
     @internship = Internship.new(internship_params)
-
     if @internship.save
-        redirect_to internship_path(@internship)
+      redirect_to internship_path(@internship)
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 

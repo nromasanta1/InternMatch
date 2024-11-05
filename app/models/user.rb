@@ -7,4 +7,5 @@ class User < ApplicationRecord
   # validates :contact_number, length: { is: 10 }
   validates :email, uniqueness: true
   # has_one_attached :profile_picture
+  enum user_type: %i[employer applicant]
 end

@@ -1,2 +1,39 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<section class="top-section text-center">
+  <div class="container">
+    <h1>Find your next internships!</h1>
+    <p>Explore possibilities around your area</p>
+<section class="featured-internships py-5">
+  <div class="container">
+    <h2 class="text-center">Featured Internships</h2>
+    <div class="row">
+      <% @internships.each do |internship| %>
+        <div class="col-4">
+          <%= image_tag "front.jpg", class: "intern-img" %>
+          <h3 class="internship-title"><%= internship.title%></h3>
+          <p> Role: <%= internship.role%> </p>
+          <%= link_to "More info", internship_path(internship), class:"btn btn-primary" %>
+        </div>
+      <% end %>
+
+      <div class="col-4">
+        <%= image_tag "back.jpg", class: "intern-img" %>
+        <h3 class="internship-title">Microsoft Internship Program 2024</h3>
+        <p> Role: Back-End Developer </p>
+        <p> Melbourne, Australia </p>
+        <p> Dates: 8 Nov 2024 - 8 Dec 2024 </p>
+        <p> $0 </p>
+        <button type="button" class="btn btn-outline-primary>Apply</button">
+      </div>
+      <div class="col-4">
+        <%= image_tag "full.png", class: "intern-img" %>
+        <h3 class="internship-title">IBM Full Stack Developer Internship Program 2025</h3>
+        <p> Role: Fullstack Developer </p>
+        <p> Melbourne, Australia </p>
+        <p> Dates: 10 Jan 2025 - 10 Mar 2025 </p>
+        <p> $0 </p>
+        <button type="button" class="btn btn-outline-primary">Apply</button>
+
+      </div>
+    </div>
+  </div>
+</section>

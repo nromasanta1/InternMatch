@@ -10,7 +10,7 @@
           <%= f.input :user_type,
                       as: :radio_buttons,
                       label: "I am an",
-                      collection: [['employer', 'employer'], ['applicant', 'applicant']],
+                      collection: [[0, 'employer'], [1, 'applicant']],
                       label_method: :second,
                       value_method: :first,
                       required: true,
