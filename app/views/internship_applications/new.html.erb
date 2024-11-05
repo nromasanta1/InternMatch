@@ -1,0 +1,12 @@
+<div class="container">
+  <% if current_user.applicant? %>
+    <h2>Create a new internship application for <%= @internship.title %></h2>
+    <%= simple_form_for [@internship, @application] do |f| %>
+      <%= f.input :comment %>
+      <%= f.button :submit, class: "btn btn-primary" %>
+      <%= link_to "Cancel", internship_path(@internship), class: "btn btn-danger"%>
+    <% end %>
+  <% else %>
+    <h3>Sorry you do not have access</h3>
+  <% end %>
+</div>

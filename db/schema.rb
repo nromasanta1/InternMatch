@@ -10,17 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_11_02_041813) do
+ActiveRecord::Schema[7.2].define(version: 2024_11_05_100604) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "internship_applications", force: :cascade do |t|
     t.date "application_date"
-    t.integer "status"
+    t.integer "status", default: 0
     t.bigint "internship_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "comment"
     t.index ["internship_id"], name: "index_internship_applications_on_internship_id"
     t.index ["user_id"], name: "index_internship_applications_on_user_id"
   end

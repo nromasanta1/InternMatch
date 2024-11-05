@@ -13,6 +13,9 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-  resources :internships
+  resources :internships do
+    resources :internship_applications, only: [:new, :create]
+  end
+
   resources :internship_applications
 end
