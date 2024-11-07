@@ -11,4 +11,8 @@
   <% if current_user.applicant? %>
     <%= link_to "Apply Now", new_internship_internship_application_path(@internship), class:"btn btn-primary" %>
   <% end %>
+
+  <div style="text-align: center; margin-top: 20px;">
+  <%= link_to 'Back to My Internships', internships_path, style: 'padding: 10px 20px; background-color: #007bff; color: white; border: none; border-radius: 5px; text-decoration: none;' %>
+</div>
 </div>
