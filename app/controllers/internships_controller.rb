@@ -4,6 +4,10 @@ class InternshipsController < ApplicationController
     @internships = Internship.all
   end
 
+  def my_index
+    @my_internships = Internship.where(user: current_user)
+  end
+
   def show
     @internship = Internship.find(params[:id])
   end

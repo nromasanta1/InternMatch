@@ -18,4 +18,6 @@ Rails.application.routes.draw do
   end
 
   resources :internship_applications
+
+  get "my_internships", to: "internships#my_index"
 end
