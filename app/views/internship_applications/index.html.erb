@@ -1,28 +1,44 @@
-<div class="container">
+<div class="container my-4">
   <% if current_user.applicant? %>
     <h2>My applications</h2>
     <% @applications.each do |application| %>
-    <ul>
-      <li><%= link_to "#{application.internship.role} at #{application.internship.title}", internship_application_path(application) %></li>
-      <li>Status: <%= application.status %></li>
-      <% if application.status == "pending" %>
-        <%= link_to "Delete", internship_application_path(application), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-      <% end %>
-    </ul>
+    <div class="card p-4 my-2">
+      <div class="d-flex justify-content-between">
+        <div>
+          <h4 class="card-title"><%= link_to "#{application.internship.role} at #{application.internship.title}", internship_application_path(application) %></h4>
+          <div class="card-subtitle">Submitted on: <%= application.application_date %> </div>
+        </div>
+        <div class="d-flex py-3">
+          <div class="card-text px-5"><%= application.status %></div>
+          <div>
+            <% if application.status == "Pending" %>
+              <%= link_to '<i class="fa-regular fa-trash-can"></i>'.html_safe, internship_application_path(application), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
     <% end %>
   <% elsif current_user.employer? %>
     <h2>Received Applications</h2>
     <% @applications.each do |application| %>
-    <ul>
-      <li><%= application.user.first_name %> <%= application.user.last_name %> at <%= application.internship.title %></li>
-      <li><%= application.status %></li>
-      <li><%= application.comment %></li>
-      <li><%= application.application_date %></li>
-      <%= link_to "Show details", internship_application_path(application) %>
-      <% if application.status == "pending" %>
-        <%= link_to "Edit", edit_internship_application_path(application) %>
-      <% end %>
-    </ul>
+      <div class="card my-2 p-4">
+        <div class="card-body d-flex justify-content-between">
+          <div>
+            <h4 class="card-title"><%= application.user.first_name %> <%= application.user.last_name %> for <%= application.internship.title %></h4>
+            <div class="card-subtitle mb-2 text-muted ">Submitted on: <%= application.application_date %></div>
+            <%= link_to "Show details", internship_application_path(application) %>
+          </div>
+          <div>
+            <div class="d-flex justify-content-between pt-4">
+              <div class="card-text px-5"><%= application.status %></div>
+              <% if application.status == "Pending" %>
+                <%= link_to "Update status", edit_internship_application_path(application) %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
     <% end %>
   <% end %>
 
