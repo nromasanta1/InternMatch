@@ -3,8 +3,9 @@
   <ul>
     <% @my_internships.each do |internship| %>
       <li><%= internship.title %></li>
+      <br>
       <%= link_to 'Edit', edit_internship_path(internship), style: 'margin-right: 5px; background-color: #28a745; color: white; padding: 8px 15px; border-radius: 4px; text-decoration: none; cursor: pointer;' %> |
-      <%= link_to 'Destroy', internship_path(internship), method: :delete, data: { confirm: 'Are you sure?' }, style: 'background-color: #dc3545; color: white; padding: 8px 15px; border-radius: 4px; text-decoration: none; cursor: pointer;' %>
+      <%= link_to 'Delete', internship_path(internship), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, style: 'background-color: #dc3545; color: white; padding: 8px 15px; border-radius: 4px; text-decoration: none; cursor: pointer;' %>
     <% end %>
   </ul>
 </div>
