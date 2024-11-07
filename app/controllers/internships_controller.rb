@@ -45,7 +45,12 @@ class InternshipsController < ApplicationController
 
   def destroy
     @internship = Internship.find(params[:id])
-    @internship.destroy
+    if current_user.employer?
+      @internship.destroy
+      redirect_to internships_path, notice: "Internship successfully deleted."
+    else
+      redirect_to root_path, status: :unprocessable_entity
+    end
   end
 end
 

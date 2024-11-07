@@ -1,0 +1,50 @@
+<div class="container">
+  <h2 style="text-align: center;">Edit Internship</h2>
+
+  <div style="text-align: center; margin-bottom: 20px;">
+    <%= link_to 'Back to My Internships', internships_path, style: 'padding: 10px 20px; background-color: #007bff; color: white; border: none; border-radius: 5px; text-decoration: none;' %>
+  </div>
+
+  <div style="max-width: 600px; margin: 0 auto;">
+    <%= form_with model: @internship, local: true do |form| %>
+      <div style="margin-bottom: 10px;">
+        <%= form.label :title, style: 'font-weight: bold;' %>
+        <%= form.text_field :title, style: 'width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;' %>
+      </div>
+
+      <div style="margin-bottom: 10px;">
+        <%= form.label :role, style: 'font-weight: bold;' %>
+        <%= form.text_field :role, style: 'width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;' %>
+      </div>
+
+      <div style="margin-bottom: 10px;">
+        <%= form.label :location, style: 'font-weight: bold;' %>
+        <%= form.text_field :location, style: 'width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;' %>
+      </div>
+
+      <div style="margin-bottom: 10px;">
+        <%= form.label :start_date, style: 'font-weight: bold;' %>
+        <%= form.date_select :start_date, style: 'width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;' %>
+      </div>
+
+      <div style="margin-bottom: 10px;">
+        <%= form.label :end_date, style: 'font-weight: bold;' %>
+        <%= form.date_select :end_date, style: 'width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;' %>
+      </div>
+
+      <div style="margin-bottom: 10px;">
+        <%= form.label :compensation, style: 'font-weight: bold;' %>
+        <%= form.number_field :compensation, style: 'width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;' %>
+      </div>
+
+      <div style="margin-bottom: 10px;">
+        <%= form.label :description, style: 'font-weight: bold;' %>
+        <%= form.text_area :description, rows: 4, style: 'width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;' %>
+      </div>
+
+      <div style="text-align: center; margin-top: 20px;">
+        <%= form.submit "Update Internship", style: 'padding: 10px 20px; background-color: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer;' %>
+      </div>
+    <% end %>
+  </div>
+</div>
