@@ -10,10 +10,21 @@
     <div class="row">
       <% @internships.each do |internship| %>
         <div class="col-4">
-          <%= image_tag "front.jpg", class: "intern-img" %>
-          <h3 class="internship-title"><%= internship.title%></h3>
-          <p> Role: <%= internship.role%> </p>
-          <%= link_to "More info", internship_path(internship), class:"btn btn-primary" %>
+          <div class="card card-home m-2">
+            <%= image_tag "front.jpg", class: "intern-img card-img-top" %>
+            <div class="card-body">
+              <h4 class="card-title"><%= internship.title%></h4>
+              <div class="card-info d-flex justify-content-between">
+                <div>
+                  <p class="card-subtitle mb-2 text-muted "><%= internship.role%></p>
+                  <p class="card-text"><%= internship.location%> </p>
+                </div>
+                <div class="d-flex mt-3">
+                  <%= link_to "More info", internship_path(internship), class:"btn btn-primary" %>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       <% end %>
 
