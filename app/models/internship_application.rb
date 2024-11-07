@@ -13,5 +13,4 @@ class InternshipApplication < ApplicationRecord
   validates :compensation, presence: true
   validates :description, presence: true
   enum :status, { pending: 0, accepted: 1, declined: 2 }
-  enum role: { employee: 0, employer: 1 }
 end
