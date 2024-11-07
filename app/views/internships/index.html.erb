@@ -30,9 +30,7 @@
         <td style="padding: 10px; border: 1px solid #ddd;"><%= internship.compensation %></td>
         <td style="padding: 10px; border: 1px solid #ddd;"><%= internship.description %></td>
         <td style="padding: 10px; border: 1px solid #ddd;">
-          <%= link_to 'Show', internship_path(internship), style: 'margin-right: 5px; color: #007bff; text-decoration: none;' %> |
-          <%= link_to 'Edit', edit_internship_path(internship), style: 'margin-right: 5px; color: #28a745; text-decoration: none;' %> |
-          <%= link_to 'Destroy', internship_path(internship), method: :delete, data: { confirm: 'Are you sure?' }, style: 'color: #dc3545; text-decoration: none;' %>
+          <%= link_to 'Details', internship_path(internship), style: 'margin-right: 5px; color: #007bff; text-decoration: none;' %>
         </td>
       </tr>
     <% end %>
