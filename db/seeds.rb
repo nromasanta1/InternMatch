@@ -76,13 +76,13 @@ end
 puts "Seeding internship applications..."
 InternshipApplication.create(
   application_date: Faker::Date.between(from: 2.days.ago, to: Date.today),
-  status: 0,
+  status: :pending,
   internship_id: rand(Internship.first.id..Internship.last.id),
   user: applicants.sample
 )
 InternshipApplication.create(
   application_date: Faker::Date.between(from: 2.days.ago, to: Date.today),
-  status: 0,
+  status: :pending,
   internship_id: rand(Internship.first.id..Internship.last.id),
   user: applicants.sample
 )
