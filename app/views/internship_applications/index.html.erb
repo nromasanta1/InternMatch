@@ -11,7 +11,7 @@
         <div class="d-flex py-3">
           <div class="card-text px-5"><%= application.status %></div>
           <div>
-            <% if application.status == "pending" %>
+            <% if application.status == "Pending" %>
               <%= link_to '<i class="fa-regular fa-trash-can"></i>'.html_safe, internship_application_path(application), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
             <% end %>
           </div>
@@ -32,7 +32,7 @@
           <div>
             <div class="d-flex justify-content-between pt-4">
               <div class="card-text px-5"><%= application.status %></div>
-              <% if application.status == "pending" %>
+              <% if application.status == "Pending" %>
                 <%= link_to "Update status", edit_internship_application_path(application) %>
               <% end %>
             </div>
