@@ -7,14 +7,14 @@
     <% if @application.status == "pending" %>
         <%= link_to "Delete", internship_application_path(@application), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
     <% end %>
-  <% else %>
+  <% elsif current_user.employer? %>
     <h2><%= @application.internship.role %> at <%= @application.internship.title %></h2>
     <p>Applicant: <%= @application.user.first_name %> <%= @application.user.last_name %></p>
     <p>Status: <%= @application.status %> </p>
     <p>Sent on: <%= @application.application_date %></p>
     <p>Comment: <%= @application.comment %></p>
     <% if @application.status == "pending" %>
-        <%= link_to "Edit", edit_internship_application_path(@application) %>
+      <%= link_to "Edit", edit_internship_application_path(@application) %>
     <% end %>
   <% end %>
 </div>
