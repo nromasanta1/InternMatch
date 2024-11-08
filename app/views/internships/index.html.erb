@@ -30,7 +30,8 @@
         <td style="padding: 10px; border: 1px solid #ddd;"><%= internship.compensation %></td>
         <td style="padding: 10px; border: 1px solid #ddd;"><%= internship.description %></td>
         <td style="padding: 10px; border: 1px solid #ddd;">
-          <%= link_to 'Details', internship_path(internship), style: 'margin-right: 5px; color: #007bff; text-decoration: none;' %>
+          <%= button_to 'Details', internship_path(internship), method: :get, class: 'btn btn-primary btn-sm' %>
+
         </td>
       </tr>
     <% end %>
