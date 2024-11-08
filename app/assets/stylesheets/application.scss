@@ -11,31 +11,42 @@
 @import "components/index";
 @import "pages/index";
 
+body, .page-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
 .footer-navbar {
-  background-color: #333; /* Adjust as needed */
-  color: #fff;
+  background-color: #343a40;
+  color: white;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  text-align: center;
+  width: 100%;
   position: relative;
   bottom: 0;
-  width: 100%;
-  padding: 0.5rem 0;
+  margin-top: auto;
 }
 
-.footer-navbar .nav-link {
-  color: #ccc; /* Lighter color for footer links */
+.footer-nav-link {
+  color: white;
 }
 
-.footer-navbar .nav-link:hover {
-  color: #fff; /* Color on hover */
+.content {
+  flex: 1;
+  padding: 10px;
 }
 
 .top-section {
-
-  padding: 50px 0;
   color: gray;
+  padding-top: 7rem;
+
 }
 
 .top-section h1 {
   font-size: 3rem;
+  padding: 0;
 }
 
 .search-form .form-control {
@@ -61,10 +72,15 @@
   padding-top: 2rem;
 }
 
-
 .intern-img {
   width: 350px;
   height: 150px;
   object-fit: cover;
   border-radius: 8px;
+}
+
+.card-img-top {
+  width: 100%;
+  height: auto;
+  border-radius: 0%;
 }
