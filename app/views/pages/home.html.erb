@@ -12,6 +12,7 @@
   <div class="container">
     <div class="row justify-content-center g-4">
       <% @internships.each do |internship| %>
+<<<<<<< HEAD
         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
           <div class="card">
             <h5 class="card-header">Featured</h5>
@@ -19,6 +20,22 @@
               <h5 class="card-title"><%= internship.title %></h5>
               <p class="card-text">Role: <%= internship.role %></p>
               <%= link_to "More info", internship_path(internship), class:"btn btn-primary" %>
+=======
+        <div class="col-4">
+          <div class="card card-home m-2">
+            <%= image_tag "front.jpg", class: "intern-img card-img-top" %>
+            <div class="card-body">
+              <h4 class="card-title"><%= internship.title%></h4>
+              <div class="card-info d-flex justify-content-between">
+                <div>
+                  <p class="card-subtitle mb-2 text-muted "><%= internship.role%></p>
+                  <p class="card-text"><%= internship.location%> </p>
+                </div>
+                <div class="d-flex mt-3">
+                  <%= link_to "More info", internship_path(internship), class:"btn btn-primary" %>
+                </div>
+              </div>
+>>>>>>> 36b4cd48aefba72801e4061bf0230a4ac83aa46f
             </div>
           </div>
         </div>
