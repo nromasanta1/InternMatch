@@ -11,15 +11,6 @@
 @import "components/index";
 @import "pages/index";
 
-.banner {
-  background-color: #FBC108;
-  padding: 5rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  margin: 0;
-  position: relative;
-}
-
 body, .page-wrapper {
   display: flex;
   flex-direction: column;
