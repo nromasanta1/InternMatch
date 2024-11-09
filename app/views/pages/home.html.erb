@@ -21,7 +21,7 @@
   </div>
 </div>
     <section class="featured-internships py-5">
-    <h2 class="mt-4 mb-3 text-center text-white fs-3 rounded-2" style= "padding: 0.5rem 1rem; margin: 1rem 0; ">
+    <h2 class="mt-2 mb-4 text-center fs-3 rounded-2" style= "margin: 1rem 0; ">
     Featured Internships </h2>
 
     <div class="container">
@@ -41,12 +41,16 @@
                 </div>
 
             <div class="card">
-              <img src="<%= asset_path('full.png') %>">
+              <% images = ['back.jpg', 'front.jpg', 'full.png', 'corporate.png', 'digital.png', 'financial.jpg', 'stock.jpg', 'tech.jpg', 'work.jpg', 'workplace.jpg'] %>
+              <% random_image = images.sample %>
+
+              <img src="<%= asset_path(random_image) %>" class="img-fluid" alt="Internship image">
+
               <div class="card-body">
                 <h5 class="card-title"><%= internship.title %></h5>
                 <p class="card-text">Role: <%= internship.role %></p>
                 <%= link_to "More info", internship_path(internship), class:"btn btn-primary" %>
-
+                <%= link_to "More info", internship_path(internship), class:"btn btn-info" %>
               </div>
             </div>
           </div>
