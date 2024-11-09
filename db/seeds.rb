@@ -72,7 +72,6 @@ bella = User.create(
   contact_number: "0400000000",
   location: "Melbourne",
 )
-bella.profile_picture.attach(io: file_4, filename: image_array[3], content_type: "image/png")
 bella.save
 file_4.close
 
