@@ -4,5 +4,4 @@ class InternshipApplication < ApplicationRecord
 
   validates :user, uniqueness: { scope: :internship }
   enum :status, { Pending: 0, Accepted: 1, Declined: 2 }
-
 end
