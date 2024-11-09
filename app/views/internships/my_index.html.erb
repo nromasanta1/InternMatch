@@ -1,11 +1,16 @@
-<div class="container">
-  <h2>My Internships</h2>
-  <ul>
-    <% @my_internships.each do |internship| %>
-      <li><%= internship.title %></li>
-      <br>
-      <%= link_to 'Edit', edit_internship_path(internship), style: 'margin-right: 5px; background-color: #28a745; color: white; padding: 8px 15px; border-radius: 4px; text-decoration: none; cursor: pointer;' %> |
-      <%= link_to 'Delete', internship_path(internship), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, style: 'background-color: #dc3545; color: white; padding: 8px 15px; border-radius: 4px; text-decoration: none; cursor: pointer;' %>
-    <% end %>
-  </ul>
+<div class="container mt-5" style="max-width: 600px; margin: 0 auto;">
+  <h2 style="text-align: center; margin-bottom: 30px;">My Internships</h2>
+
+  <% @my_internships.each do |internship| %>
+    <div class="card mb-4 p-3 shadow-sm" style="border-radius: 8px;">
+      <div class="card-body">
+        <h5 class="card-title"><%= internship.title %></h5>
+
+        <div class="d-flex justify-content-between align-items-center mt-3">
+          <%= link_to 'Edit', edit_internship_path(internship), class: 'btn btn-success', style: 'padding: 8px 15px; border-radius: 5px;' %>
+          <%= link_to 'Delete', internship_path(internship), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger', style: 'padding: 8px 15px; border-radius: 5px;' %>
+        </div>
+      </div>
+    </div>
+  <% end %>
 </div>
