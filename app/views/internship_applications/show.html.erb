@@ -34,7 +34,7 @@
           <% end %>
         </div>
       </div>
-      <div class="col-8">
+      <div class="col-6">
         <div class="card h-100">
           <div class="card-body">
             <div class="card-text" style="font-weight:bold">Comment:</div>
@@ -52,6 +52,9 @@
             <li class="list-group-item">Sent on: <%= "#{@application.application_date.mday} #{Date::MONTHNAMES[@application.application_date.mon]} #{@application.application_date.year}" %></li>
           </ul>
         </div>
+      </div>
+      <div class="col-2">
+        <%= cl_image_tag @application.user.profile_picture.key, crop: :fill, class: "avatar-card-show" %>
       </div>
     <% end %>
   </div>
