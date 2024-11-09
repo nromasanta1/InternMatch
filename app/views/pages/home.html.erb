@@ -1,3 +1,16 @@
+<div class="container">
+  <!-- Hero Section -->
+  <section class="mt-4 text-center">
+    <h1 style="font-weight: bold; color: #343a40;">Find Your Next Internship</h1>
+    <p style="font-size: 1.2rem; color: #6c757d;">Explore the best opportunities in your area</p>
+  </section>
+
+  <!-- Featured Internships Section -->
+  <section class="featured-internships py-5">
+    <h2 class="mt-4 mb-5 text-center text-white fs-3 rounded-2" style="background-color: #4e73df; padding: 0.5rem 1rem;">
+      Featured Internships
+    </h2>
+
 <div class= "top">
   <div class="container">
 
@@ -15,6 +28,18 @@
       <div class="row justify-content-center g-4">
         <% @internships.each do |internship| %>
           <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+
+            <div class="card shadow-sm border-0 internship-card" style="border-radius: 15px;">
+              <div class="card-header text-white" style="background-color: #1cc88a; border-radius: 15px 15px 0 0;">
+                Featured
+              </div>
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title text-dark"><%= internship.title %></h5>
+                <p class="card-text text-secondary">Role: <%= internship.role %></p>
+                <div class="mt-auto">
+                  <%= link_to "More info", internship_path(internship), class: "btn btn-primary w-100", style: "background-color: #4e73df; border: none; border-radius: 8px;" %>
+                </div>
+
             <div class="card">
               <% images = ['back.jpg', 'front.jpg', 'full.png', 'corporate.png', 'digital.png', 'financial.jpg', 'stock.jpg', 'tech.jpg', 'work.jpg', 'workplace.jpg'] %>
               <% random_image = images.sample %>
@@ -24,6 +49,7 @@
               <div class="card-body">
                 <h5 class="card-title"><%= internship.title %></h5>
                 <p class="card-text">Role: <%= internship.role %></p>
+                <%= link_to "More info", internship_path(internship), class:"btn btn-primary" %>
                 <%= link_to "More info", internship_path(internship), class:"btn btn-info" %>
               </div>
             </div>
@@ -32,4 +58,5 @@
       </div>
     </div>
   </section>
-  </div>
+</div>
+
