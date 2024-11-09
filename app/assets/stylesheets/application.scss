@@ -38,15 +38,20 @@ body, .page-wrapper {
   padding: 10px;
 }
 
+.top {
+  background-image: url('banner.png');
+  background-size: cover;
+  background-position: center;
+}
+
 .top-section {
   color: gray;
-  padding-top: 7rem;
-
+  padding-top: 3rem;
 }
 
 .top-section h1 {
   font-size: 3rem;
-  padding: 0;
+  padding-top: 20%;
 }
 
 .search-form .form-control {
@@ -71,4 +76,3 @@ body, .page-wrapper {
 .popular-listings .bg-light {
   padding-top: 2rem;
 }
-
