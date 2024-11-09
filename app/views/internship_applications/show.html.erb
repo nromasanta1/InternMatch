@@ -1,22 +1,32 @@
 <div class="container my-4">
   <div class="row">
     <% if current_user.applicant? %>
-      <div class="card">
+      <div class="card p-3">
         <div class="card-body">
-          <h2>Your application for: <%= @application.internship.role %> at <%= @application.internship.title %></h2>
-          <p>Status: <%= @application.status %> </p>
-          <p>Sent on: <%= @application.application_date %></p>
-          <p>Comment: <%= @application.comment %></p>
-          <% if @application.status == "Pending" %>
-            <%= link_to "Delete", internship_application_path(@application), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-          <% end %>
+          <div class="d-flex justify-content-between">
+            <div class="card-subtitle mb-2 text-muted">Your application for: </div>
+            <% if @application.status == "Pending" %>
+              <%= link_to "Withdraw your application", internship_application_path(@application), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, style:"color: red" %>
+            <% end %>
+          </div>
+          <h2 class="card-title"><%= @application.internship.role %> at <%= @application.internship.title %></h2>
+          <div class="card-text subheader">Employer</div>
+          <div class="card-text"><%= "#{@application.internship.user.first_name} #{@application.internship.user.last_name}" %></div>
+          <div class="card-text subheader">Status</div>
+          <div class="card-text"><%= @application.status %></div>
+          <div class="card-text subheader">Sent on</div>
+          <div class="card-text"><%= "#{@application.application_date.mday} #{Date::MONTHNAMES[@application.application_date.mon]} #{@application.application_date.year}" %></div>
+          <div class="card-text subheader">Comment</div>
+          <div class="card-text"><%= @application.comment %></div>
         </div>
       </div>
+
+
     <% elsif current_user.employer? %>
       <div class="d-flex justify-content-between">
         <div>
           <h2><%= @application.internship.role %> at <%= @application.internship.title %></h2>
-          <h3><%= @application.status %> </h3>
+          <h5><em><%= @application.status %></em></h5>
         </div>
         <div class="pt-3">
           <% if @application.status == "Pending" %>
@@ -27,25 +37,22 @@
       <div class="col-8">
         <div class="card h-100">
           <div class="card-body">
-            <div class="card-text">Comment:</div>
+            <div class="card-text" style="font-weight:bold">Comment:</div>
             <div class="card-text"><%= @application.comment %></div>
           </div>
         </div>
       </div>
       <div class="col-4">
         <div class="card text-white bg-dark">
-          <div class="card-header">Name: <%= @application.user.first_name %> <%= @application.user.last_name %></div>
+          <div class="card-header"><%= @application.user.first_name %> <%= @application.user.last_name %></div>
           <ul class="list-group list-group-flush">
             <li class="list-group-item">Phone: <%= @application.user.contact_number[0..3] %> <%= @application.user.contact_number[4..6] %> <%= @application.user.contact_number[7..9] %></li>
             <li class="list-group-item">Email: <%= @application.user.email %></li>
             <li class="list-group-item">Location: <%= @application.user.location %></li>
-            <li class="list-group-item">Sent on: <%= @application.application_date %></li>
+            <li class="list-group-item">Sent on: <%= "#{@application.application_date.mday} #{Date::MONTHNAMES[@application.application_date.mon]} #{@application.application_date.year}" %></li>
           </ul>
         </div>
       </div>
-      <% if @application.status == "pending" %>
-        <%= link_to "Edit", edit_internship_application_path(@application) %>
-      <% end %>
     <% end %>
   </div>
 </div>

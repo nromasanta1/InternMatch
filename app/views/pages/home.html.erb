@@ -11,10 +11,24 @@
       Featured Internships
     </h2>
 
+<div class= "top">
+  <div class="container">
+
+    <section class="mt-4 mb-4 top-section text-center">
+      <h1></h1>
+      <p></p>
+    </section>
+  </div>
+</div>
+    <section class="featured-internships py-5">
+    <h2 class="mt-4 mb-3 text-center text-white fs-3 rounded-2" style= "padding: 0.5rem 1rem; margin: 1rem 0; ">
+    Featured Internships </h2>
+
     <div class="container">
       <div class="row justify-content-center g-4">
         <% @internships.each do |internship| %>
           <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+
             <div class="card shadow-sm border-0 internship-card" style="border-radius: 15px;">
               <div class="card-header text-white" style="background-color: #1cc88a; border-radius: 15px 15px 0 0;">
                 Featured
@@ -25,6 +39,14 @@
                 <div class="mt-auto">
                   <%= link_to "More info", internship_path(internship), class: "btn btn-primary w-100", style: "background-color: #4e73df; border: none; border-radius: 8px;" %>
                 </div>
+
+            <div class="card">
+              <img src="<%= asset_path('full.png') %>">
+              <div class="card-body">
+                <h5 class="card-title"><%= internship.title %></h5>
+                <p class="card-text">Role: <%= internship.role %></p>
+                <%= link_to "More info", internship_path(internship), class:"btn btn-primary" %>
+
               </div>
             </div>
           </div>
@@ -33,3 +55,4 @@
     </div>
   </section>
 </div>
+

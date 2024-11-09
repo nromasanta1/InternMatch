@@ -1,12 +1,19 @@
-<div class="container">
-  <%= @application.user.first_name %> <%= @application.user.last_name %>
-  applying for
-  <%= @application.internship.role %> at <%= @application.internship.title %>
-  <%= simple_form_for @application do |f| %>
-    <%= f.input :status,
-                as: :radio_buttons,
-                collection: [['pending', 'pending'], ['accepted', 'accepted'], ['declined', 'declined']]
-    %>
-    <%= f.button :submit, class: "btn btn-primary" %>
-  <% end %>
+<div class="container my-4">
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <h2>
+        <%= @application.user.first_name %> <%= @application.user.last_name %>
+        applying for
+        <%= @application.internship.role %> at <%= @application.internship.title %>
+      </h2>
+      <%= simple_form_for @application do |f| %>
+        <%= f.input :status,
+                    as: :radio_buttons,
+                    collection: [['Pending', 'Pending'], ['Accepted', 'Accepted'], ['Declined', 'Declined']],
+                    label: ""
+        %>
+        <%= f.button :submit, class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
 </div>
