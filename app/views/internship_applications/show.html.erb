@@ -48,7 +48,7 @@
             <h3 class="card-title"><%= @application.user.first_name.capitalize %> <%= @application.user.last_name.capitalize %></h3>
             <div class="d-flex justify-content-start">
               <div>
-                <%= cl_image_tag @application.user.profile_picture.key, crop: :fill, class:"avatar-card-show"%>
+                <%#=image_tag @application.user.profile_picture, crop: :fill, class:"avatar-card-show"%>
               </div>
               <div class="card-info mx-3">
                 <div class="card-text">Phone: <%= @application.user.contact_number[0..3] %> <%= @application.user.contact_number[4..6] %> <%= @application.user.contact_number[7..9] %></div>

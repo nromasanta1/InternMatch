@@ -25,7 +25,7 @@
       <div class="card my-2 p-3">
         <div class="card-body d-flex justify-content-between">
           <div class="d-flex justify-content-between">
-            <%= cl_image_tag application.user.profile_picture.key, height: 100, crop: :fill, class: "avatar-card" %>
+            <%#= image_tag application.user.profile_picture, height: 100, crop: :fill, class: "avatar-card" %>
             <div class="card-info">
               <h4 class="card-title"><%= application.user.first_name %> <%= application.user.last_name %> for <%= application.internship.title %></h4>
               <div class="card-subtitle mb-2 text-muted ">Submitted on: <%= "#{application.application_date.mday} #{Date::MONTHNAMES[application.application_date.mon]} #{application.application_date.year}" %></div>
