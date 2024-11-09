@@ -22,7 +22,9 @@
           <%= f.input :last_name,
                       required: true,
                       input_html: { autocomplete: "last-name" }%>
-          <%= f.input :profile_picture, as: :file %>
+          <%= f.input :profile_picture,
+                      required: true,
+                      as: :file %>
           <%= f.input :industry,
                       required: true,
                       input_html: { autocomplete: "industry" }%>
