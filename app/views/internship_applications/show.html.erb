@@ -34,7 +34,7 @@
           <% end %>
         </div>
       </div>
-      <div class="col-6">
+      <div class="col-8">
         <div class="card h-100">
           <div class="card-body">
             <div class="card-text" style="font-weight:bold">Comment:</div>
@@ -43,19 +43,24 @@
         </div>
       </div>
       <div class="col-4">
-        <div class="card text-white bg-dark">
-          <div class="card-header"><%= @application.user.first_name %> <%= @application.user.last_name %></div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">Phone: <%= @application.user.contact_number[0..3] %> <%= @application.user.contact_number[4..6] %> <%= @application.user.contact_number[7..9] %></li>
-            <li class="list-group-item">Email: <%= @application.user.email %></li>
-            <li class="list-group-item">Location: <%= @application.user.location %></li>
-            <li class="list-group-item">Sent on: <%= "#{@application.application_date.mday} #{Date::MONTHNAMES[@application.application_date.mon]} #{@application.application_date.year}" %></li>
-          </ul>
+        <div class="card">
+          <div class="card-body">
+            <h3 class="card-title"><%= @application.user.first_name.capitalize %> <%= @application.user.last_name.capitalize %></h3>
+            <div class="d-flex justify-content-start">
+              <div>
+                <%= cl_image_tag @application.user.profile_picture.key, crop: :fill, class:"avatar-card-show"%>
+              </div>
+              <div class="card-info mx-3">
+                <div class="card-text">Phone: <%= @application.user.contact_number[0..3] %> <%= @application.user.contact_number[4..6] %> <%= @application.user.contact_number[7..9] %></div>
+                <div class="card-text">Email: <%= @application.user.email %></div>
+                <div class="card-text">Email: <%= @application.user.location %></div>
+                <div class="card-text">Sent on: <%= "#{@application.application_date.mday} #{Date::MONTHNAMES[@application.application_date.mon]} #{@application.application_date.year}" %></div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="col-2">
-        <%= cl_image_tag @application.user.profile_picture.key, crop: :fill, class: "avatar-card-show" %>
-      </div>
+
     <% end %>
   </div>
 </div>
