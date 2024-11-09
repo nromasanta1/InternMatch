@@ -23,8 +23,8 @@
           <td style="padding: 10px; border: 1px solid #ddd;"><%= link_to internship.title, internship_path(internship)%></td>
           <td style="padding: 10px; border: 1px solid #ddd;"><%= internship.role %></td>
           <td style="padding: 10px; border: 1px solid #ddd;"><%= internship.location %></td>
-          <td style="padding: 10px; border: 1px solid #ddd;"><%= internship.start_date %></td>
-          <td style="padding: 10px; border: 1px solid #ddd;"><%= internship.end_date %></td>
+          <td style="padding: 10px; border: 1px solid #ddd;"><%= "#{internship.start_date.mday} #{Date::MONTHNAMES[internship.start_date.mon]} #{internship.start_date.year}" %></td>
+          <td style="padding: 10px; border: 1px solid #ddd;"><%= "#{internship.end_date.mday} #{Date::MONTHNAMES[internship.end_date.mon]} #{internship.end_date.year}" %></td>
         </tr>
       <% end %>
     </tbody>
