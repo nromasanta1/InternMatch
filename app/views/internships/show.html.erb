@@ -1,18 +1,32 @@
 <div class="container my-4">
-  <h2><%= @internship.title %></h2>
-  <ul>
-    <li><%= @internship.role %></li>
-    <li><%= @internship.description %></li>
-    <li>Located in: <%= @internship.location %></li>
-    <li>Start date: <%= @internship.start_date %></li>
-    <li>End date: <%= @internship.end_date %></li>
-    <li>$ <%= @internship.compensation %></li>
-  </ul>
-  <% if current_user.applicant? %>
-    <%= link_to "Apply Now", new_internship_internship_application_path(@internship), class:"btn btn-primary" %>
-  <% end %>
+  <div class="card p-3">
+    <div class="card-body">
+      <div class="d-flex justify-content-between">
+        <h2 class="card-title"><%= @internship.title %></h2>
+        <%= link_to '<i class="fa-solid fa-rotate-left"></i> Return'.html_safe, internships_path, style: "color: gray" %>
+      </div>
+      <div class="row align-items-center">
+        <div class="col-10">
+          <div class="card-subtitle mb-2 text-muted"><%= @internship.role %> role</div>
+          <div class="card-text pb-2" style="color: gray">Posted by <%= "#{@internship.user.first_name} #{@internship.user.last_name}" %></div>
+          <div class="card-text subheader">Description</div>
+          <div class="card-text"><%= @internship.description %></div>
+          <div class="card-text subheader">Location</div>
+          <div class="card-text"><%= @internship.location %></div>
+          <div class="card-text subheader">Start date</div>
+          <div class="card-text"><%= "#{@internship.start_date.mday} #{Date::MONTHNAMES[@internship.start_date.mon]} #{@internship.start_date.year}" %></div>
+          <div class="card-text subheader">End date</div>
+          <div class="card-text"><%= "#{@internship.end_date.mday} #{Date::MONTHNAMES[@internship.end_date.mon]} #{@internship.end_date.year}" %></div>
+          <div class="card-text subheader">Compensation</div>
+          <div class="card-text">$<%= number_with_delimiter(@internship.compensation, :delimiter => ',') %></div>
+        </div>
+        <div class="col-2 d-flex flex-row-reverse">
+          <% if current_user.applicant? %>
+            <%= link_to "Apply Now", new_internship_internship_application_path(@internship), class:"btn btn-primary" %>
+          <% end %>
+        </div>
+      </div>
 
-  <div style="text-align: center; margin-top: 20px;">
-  <%= link_to 'Back to My Internships', internships_path, style: 'padding: 10px 20px; background-color: #007bff; color: white; border: none; border-radius: 5px; text-decoration: none;' %>
-</div>
+    </div>
+  </div>
 </div>

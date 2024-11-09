@@ -59,7 +59,7 @@ puts "Seeding internships..."
   internship = Internship.new(
     title: Faker::Job.title,
     role: Faker::Job.position,
-    description: Faker::Company.catch_phrase,
+    description: Faker::Lorem.paragraph(sentence_count: 10),
     location: Faker::Address.city,
     start_date: Faker::Date.between(from: 2.days.ago, to: Date.today),
     end_date: Faker::Date.between(from: '2025-01-30', to: '2025-07-31'),
@@ -76,13 +76,13 @@ end
 puts "Seeding internship applications..."
 InternshipApplication.create(
   application_date: Faker::Date.between(from: 2.days.ago, to: Date.today),
-  status: :pending,
+  status: :Pending,
   internship_id: rand(Internship.first.id..Internship.last.id),
   user: applicants.sample
 )
 InternshipApplication.create(
   application_date: Faker::Date.between(from: 2.days.ago, to: Date.today),
-  status: :pending,
+  status: :Pending,
   internship_id: rand(Internship.first.id..Internship.last.id),
   user: applicants.sample
 )
