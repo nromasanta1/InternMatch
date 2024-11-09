@@ -22,11 +22,11 @@
   <% elsif current_user.employer? %>
     <h2>Received Applications</h2>
     <% @applications.each do |application| %>
-      <div class="card my-2 p-4">
+      <div class="card my-2 p-3">
         <div class="card-body d-flex justify-content-between">
           <div>
             <h4 class="card-title"><%= application.user.first_name %> <%= application.user.last_name %> for <%= application.internship.title %></h4>
-            <div class="card-subtitle mb-2 text-muted ">Submitted on: <%= application.application_date %></div>
+            <div class="card-subtitle mb-2 text-muted ">Submitted on: <%= "#{application.application_date.mday} #{Date::MONTHNAMES[application.application_date.mon]} #{application.application_date.year}" %></div>
             <%= link_to "Show details", internship_application_path(application) %>
           </div>
           <div>
@@ -41,5 +41,4 @@
       </div>
     <% end %>
   <% end %>
-
 </div>
