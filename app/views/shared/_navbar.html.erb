@@ -9,10 +9,10 @@
     </button>
 
     <ul class="navbar-nav me-auto">
-      <li class="nav-item">
-        <%= link_to "Explore", internships_path, class: "nav-link" %>
-      </li>
       <% if current_user %>
+        <li class="nav-item">
+          <%= link_to "Explore", internships_path, class: "nav-link" %>
+        </li>
         <li class="nav-item">
           <%= link_to "My Applications", internship_applications_path, class: "nav-link" %>
         </li>
@@ -21,9 +21,6 @@
             <%= link_to "My Internships", my_internships_path, class: "nav-link" %>
           </li>
         <% elsif current_user.applicant? %>
-          <li class="nav-item">
-            <%= link_to "Apply Now", "", class: "nav-link" %>
-          </li>
         <% end %>
       <% end %>
     </ul>
@@ -41,6 +38,9 @@
             </div>
           </li>
         <% else %>
+          <li class="nav-item">
+            <%= link_to "Sign Up", new_user_registration_path, class: "nav-link" %>
+          </li>
           <li class="nav-item">
             <%= link_to "Login", new_user_session_path, class: "nav-link" %>
           </li>

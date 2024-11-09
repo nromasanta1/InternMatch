@@ -4,7 +4,12 @@ puts "Emptying INTERNSHIPS database..."
 Internship.destroy_all
 
 puts "Emptying USERS database..."
-User.destroy_all
+  User.destroy_all
+
+image_array = ["abby.jpg", "harry.jpg", "homer.jpg", "bella.jpg"]
+
+file_path_1 = Rails.root.join("app/assets/images/#{image_array[0]}")
+file_1 = File.open(file_path_1)
 puts "Creating EMPLOYER 1 - Abby Chamber..."
 abby = User.create(
   email: "abbychamber@gmail.com",
@@ -16,8 +21,14 @@ abby = User.create(
   contact_number: "0412345678",
   location: "Melbourne",
 )
+abby.profile_picture.attach(io: file_1, filename: image_array[0], content_type: "image/png")
+abby.save
+file_1.close
+
+file_path_2 = Rails.root.join("app/assets/images/#{image_array[1]}")
+file_2 = File.open(file_path_2)
 puts "Creating EMPLOYER 2 - Harry Potter..."
-harry = User.create(
+harry = User.new(
   email: "harrypotter@gmail.com",
   password: "123456",
   user_type: 0,
@@ -27,7 +38,12 @@ harry = User.create(
   contact_number: "0499999999",
   location: "Sydney",
 )
+harry.profile_picture.attach(io: file_2, filename: image_array[1], content_type: "image/png")
+harry.save
+file_2.close
 
+file_path_3 = Rails.root.join("app/assets/images/#{image_array[2]}")
+file_3 = File.open(file_path_3)
 puts "Creating APPLICANT 1 - Homer Simpson..."
 homer = User.create(
   email: "homersimpson@gmail.com",
@@ -39,7 +55,12 @@ homer = User.create(
   contact_number: "0411223344",
   location: "Brisbane",
 )
+homer.profile_picture.attach(io: file_3, filename: image_array[2], content_type: "image/png")
+homer.save
+file_3.close
 
+file_path_4 = Rails.root.join("app/assets/images/#{image_array[3]}")
+file_4 = File.open(file_path_4)
 puts "Creating APPLICANT 2 - Bella Swan..."
 bella = User.create(
   email: "bellaswan@gmail.com",
@@ -51,6 +72,9 @@ bella = User.create(
   contact_number: "0400000000",
   location: "Melbourne",
 )
+bella.save
+file_4.close
+
 employers = [abby, harry]
 applicants = [homer, bella]
 
@@ -78,13 +102,15 @@ InternshipApplication.create(
   application_date: Faker::Date.between(from: 2.days.ago, to: Date.today),
   status: :Pending,
   internship_id: rand(Internship.first.id..Internship.last.id),
-  user: applicants.sample
+  user: applicants.sample,
+  comment: Faker::Lorem.paragraph(sentence_count: 4)
 )
 InternshipApplication.create(
   application_date: Faker::Date.between(from: 2.days.ago, to: Date.today),
   status: :Pending,
   internship_id: rand(Internship.first.id..Internship.last.id),
-  user: applicants.sample
+  user: applicants.sample,
+  comment: Faker::Lorem.paragraph(sentence_count: 4)
 )
 
 puts "Complete!"
