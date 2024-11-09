@@ -15,25 +15,16 @@
         <th style="padding: 10px; border: 1px solid #ddd;">Location</th>
         <th style="padding: 10px; border: 1px solid #ddd;">Start Date</th>
         <th style="padding: 10px; border: 1px solid #ddd;">End Date</th>
-        <th style="padding: 10px; border: 1px solid #ddd;">Compensation</th>
-        <th style="padding: 10px; border: 1px solid #ddd;">Description</th>
-        <th style="padding: 10px; border: 1px solid #ddd;">Actions</th>
       </tr>
     </thead>
     <tbody>
       <% @internships.each do |internship| %>
         <tr>
-          <td style="padding: 10px; border: 1px solid #ddd;"><%= internship.title %></td>
+          <td style="padding: 10px; border: 1px solid #ddd;"><%= link_to internship.title, internship_path(internship)%></td>
           <td style="padding: 10px; border: 1px solid #ddd;"><%= internship.role %></td>
           <td style="padding: 10px; border: 1px solid #ddd;"><%= internship.location %></td>
           <td style="padding: 10px; border: 1px solid #ddd;"><%= internship.start_date %></td>
           <td style="padding: 10px; border: 1px solid #ddd;"><%= internship.end_date %></td>
-          <td style="padding: 10px; border: 1px solid #ddd;"><%= internship.compensation %></td>
-          <td style="padding: 10px; border: 1px solid #ddd;"><%= internship.description %></td>
-          <td style="padding: 10px; border: 1px solid #ddd;">
-            <%= button_to 'Details', internship_path(internship), method: :get, class: 'btn btn-primary btn-sm' %>
-
-          </td>
         </tr>
       <% end %>
     </tbody>
