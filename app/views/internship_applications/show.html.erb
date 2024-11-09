@@ -53,7 +53,7 @@
               <div class="card-info mx-3">
                 <div class="card-text">Phone: <%= @application.user.contact_number[0..3] %> <%= @application.user.contact_number[4..6] %> <%= @application.user.contact_number[7..9] %></div>
                 <div class="card-text">Email: <%= @application.user.email %></div>
-                <div class="card-text">Email: <%= @application.user.location %></div>
+                <div class="card-text">Location: <%= @application.user.location %></div>
                 <div class="card-text">Sent on: <%= "#{@application.application_date.mday} #{Date::MONTHNAMES[@application.application_date.mon]} #{@application.application_date.year}" %></div>
               </div>
             </div>
