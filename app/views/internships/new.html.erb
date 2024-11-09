@@ -1,34 +1,38 @@
 <div class="container my-4">
-  <h2>Create an Internship</h2>
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <h2>Create an Internship</h2>
 
-  <% if !current_user.employer? %>
-    <div class="alert alert-danger">
-      You must be an employer to create an internship.
+      <% if !current_user.employer? %>
+        <div class="alert alert-danger">
+          You must be an employer to create an internship.
+        </div>
+        <%= link_to "Back to Home", root_path, class: "btn btn-primary" %>
+      <% else %>
+        <%= simple_form_for @internship do |f| %>
+          <%= f.input :title %>
+          <%= f.input :role %>
+          <%= f.input :description %>
+          <%= f.input :location %>
+          <%= f.input :start_date %>
+          <%= f.input :end_date %>
+          <%= f.input :compensation %>
+          <%= f.hidden_field :user_id, value: current_user.id %>
+          <%= f.button :submit, class: "btn btn-primary" %>
+          <%= link_to "Cancel", root_path, class: "btn btn-danger" %>
+        <% end %>
+
+        <% if @internship.errors.any? %>
+          <div class="alert alert-danger">
+            <h4><%= pluralize(@internship.errors.count, "error") %> prohibited this internship from being saved:</h4>
+            <ul>
+              <% @internship.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+      <% end %>
     </div>
-    <%= link_to "Back to Home", root_path, class: "btn btn-primary" %>
-  <% else %>
-    <%= simple_form_for @internship do |f| %>
-      <%= f.input :title %>
-      <%= f.input :role %>
-      <%= f.input :description %>
-      <%= f.input :location %>
-      <%= f.input :start_date %>
-      <%= f.input :end_date %>
-      <%= f.input :compensation %>
-      <%= f.hidden_field :user_id, value: current_user.id %>
-      <%= f.button :submit, class: "btn btn-primary" %>
-      <%= link_to "Cancel", root_path, class: "btn btn-danger" %>
-    <% end %>
-
-    <% if @internship.errors.any? %>
-      <div class="alert alert-danger">
-        <h4><%= pluralize(@internship.errors.count, "error") %> prohibited this internship from being saved:</h4>
-        <ul>
-          <% @internship.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-  <% end %>
+  </div>
 </div>
